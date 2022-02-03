@@ -1,10 +1,7 @@
 package program.controllers.admin;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import program.dto.admin.proddto.ProdAddDto;
 import program.entities.Product;
 import program.mapper.ApplicationMapper;
@@ -33,4 +30,21 @@ public int create(ProdAddDto model) {
     productRepository.save(product);
     return product.getId();
 }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id){
+        productRepository.deleteById(id);
+        return "ok";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") Integer id, ProdAddDto model){
+        Product update = productRepository.getById(id);
+        update.setName(model.getName());
+        update.setPrice(model.getPrice());
+        update.setDescription(model.getDescription());
+        productRepository.save(update);
+        return "Обновили продукт №:" + update.getId();
+
+    }
 }
