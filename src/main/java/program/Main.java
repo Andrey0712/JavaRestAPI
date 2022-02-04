@@ -11,15 +11,17 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
         SpringApplication.run(Main.class, args);
-//    }
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/admin/roles").allowedOrigins("http://localhost:3000");
-//            }
-//        };
+    }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/admin/products/list").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/admin/products/delete/{id}").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/admin/products").allowedOrigins("http://localhost:3000");
+            }
+        };
     }
 
 }
