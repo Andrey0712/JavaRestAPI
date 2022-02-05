@@ -8,7 +8,12 @@ class ProdDataService {
     }  
     del(data){
         return http
-            .post("admin/products/delete", data);}
+            .post("admin/products/delete", data);
+    }
+    register(data) {
+        return http.post("admin/products", data);     
+    }
+    
     
 }
 
