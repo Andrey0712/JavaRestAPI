@@ -14,11 +14,17 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(length = 100,nullable = false)
     private String name;
+
     @Column(nullable = false)
     private BigDecimal price;
+
     @Column(length = 100,nullable = false)
     private String description;
+
+    @Column(length = 200, nullable = true)
+    private String image;
 
 }
