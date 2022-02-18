@@ -18,10 +18,10 @@ public class Product {
     @Column(length = 100,nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private BigDecimal price;
 
-    @Column(length = 100,nullable = false)
+    @Column(length = 100,nullable = true)
     private String description;
 
     @Column(length = 200, nullable = true)

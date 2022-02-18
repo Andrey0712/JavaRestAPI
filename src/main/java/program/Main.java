@@ -27,6 +27,7 @@ public class Main {
                 registry.addMapping("/admin/products/list").allowedOrigins("http://localhost:3000");
                 registry.addMapping("/admin/products/delete/{id}").allowedOrigins("http://localhost:3000");
                 registry.addMapping("/admin/products").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/admin/products/foto").allowedOrigins("http://localhost:3000");
             }
         };
     }

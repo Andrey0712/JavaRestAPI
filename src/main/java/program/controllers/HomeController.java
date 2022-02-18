@@ -31,19 +31,19 @@ public class HomeController {
         model.addAttribute("Products", productRepository.findAll());
         return "main/index";
     }
-
+    //получить фаил из файловой системы
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws Exception {
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws Exception {//запрос на сервак по имени файла
 
-        Resource file = storageService.loadAsResource(filename);
-        String urlFileName =  URLEncoder.encode("сало.jpg", StandardCharsets.UTF_8.toString());
-        return ResponseEntity.ok()
+        Resource file = storageService.loadAsResource(filename);// вытягиваем фаил из файловой системы
+        String urlFileName =  URLEncoder.encode("моя.jpg", StandardCharsets.UTF_8.toString());//будет выдавать моя
+        return ResponseEntity.ok()// если ок отправляем на фронт
                 //.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-                .contentType(MediaType.IMAGE_JPEG)
+                .contentType(MediaType.IMAGE_JPEG)// тип контента
 
                 .header(HttpHeaders.CONTENT_DISPOSITION,"filename=\""+urlFileName+"\"")
-                .body(file);
+                .body(file);//имя файла и фаил
     }
 
 
