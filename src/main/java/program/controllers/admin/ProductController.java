@@ -40,14 +40,14 @@ public int create(ProdAddDto model) {
     productRepository.save(product);
     return product.getId();}
 
-    @PostMapping("/foto")
-    public int createFoto(FotoAddDTO model) {
-        Product product=mapper.ProdByFotoProdDto(model);
+    @PostMapping("/upload")//добавить фото на сервак
+    public String upload(FotoAddDTO model) {
+        //Product product=mapper.ProdByFotoProdDto(model);
         String fileName=storageService.store(model.getImage());
-        product.setImage(fileName);
-        productRepository.save(product);
-        return product.getId();
-        //return fileName;
+        //product.setImage(fileName);
+        //productRepository.save(product);
+        //return product.getId();
+        return fileName;
 }
 
     @PostMapping("/delete/{id}")

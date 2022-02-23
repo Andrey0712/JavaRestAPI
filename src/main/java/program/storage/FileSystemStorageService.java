@@ -55,6 +55,7 @@ public class FileSystemStorageService implements StorageService {
     public Path load(String filename) {
         return rootLocation.resolve(filename);
     }
+
     // base64 сохранить с уникальным имям
     @Override
     public String store(String base64) {

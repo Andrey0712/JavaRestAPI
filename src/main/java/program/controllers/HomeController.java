@@ -19,7 +19,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-@Controller
+@RestController("/")
 @RequiredArgsConstructor
 public class HomeController {
     private final ProductRepository productRepository;
@@ -44,6 +44,16 @@ public class HomeController {
 
                 .header(HttpHeaders.CONTENT_DISPOSITION,"filename=\""+urlFileName+"\"")
                 .body(file);//имя файла и фаил
+    }
+
+    @PostMapping("/upload")//добавить фото на сервак
+    public String upload(FotoAddDTO model) {
+        //Product product=mapper.ProdByFotoProdDto(model);
+        String fileName=storageService.store(model.getImage());
+        //product.setImage(fileName);
+        //productRepository.save(product);
+        //return product.getId();
+        return fileName;
     }
 
 
